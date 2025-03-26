@@ -1,4 +1,4 @@
-package com.credable.Credable.Technical.Assessment.repository.kyc;
+package com.credable.repository.kyc;
 
 
 
@@ -11,7 +11,7 @@ import java.time.LocalDateTime;
 @Entity
 @Data
 @Table(name = "kyc")
-public class Kyc {
+public class KycEntity {
 
     @jakarta.persistence.Id
     @Id
