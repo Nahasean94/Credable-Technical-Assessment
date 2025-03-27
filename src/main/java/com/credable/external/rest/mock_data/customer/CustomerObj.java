@@ -8,10 +8,12 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.time.LocalDateTime;
- @Getter
+import java.util.UUID;
+
+@Getter
  @Setter
 public class CustomerObj {
-    private Long id;
+    private UUID id;
     private String customerNumber;
     private String firstName;
     private String middleName;

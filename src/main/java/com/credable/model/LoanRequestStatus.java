@@ -9,8 +9,4 @@ public enum LoanRequestStatus {
         return name();
     }
 
-    public static LoanRequestStatus fromValue(String v) {
-        return valueOf(v);
-    }
-
 }

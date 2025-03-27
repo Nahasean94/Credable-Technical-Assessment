@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import java.time.LocalDateTime;
-import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -22,14 +21,6 @@ public class KycService {
     public KycService(IKycRepository kycRepository) {
 //        this.soapClient = soapClient;
         this.kycRepository = kycRepository;
-    }
-
-    public List<KycEntity> getAllKycRecords() {
-        return kycRepository.findAll();
-    }
-
-    public KycEntity saveKyc(KycEntity kyc) {
-        return kycRepository.save(kyc);
     }
 
     @Transactional

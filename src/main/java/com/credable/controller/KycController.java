@@ -1,16 +1,17 @@
 package com.credable.controller;
 
 
-
+import com.credable.model.KycRequest;
+import com.credable.model.KycResponse;
 import com.credable.repository.kyc.KycEntity;
 import com.credable.service.KycService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
 import java.util.Optional;
 
+@Slf4j
 @RestController
 @RequestMapping("/api")
 public class KycController {
@@ -18,19 +19,25 @@ public class KycController {
     @Autowired
     private KycService kycService;
 
-    @GetMapping
-    public List<KycEntity> getAllKycRecords() {
-        return kycService.getAllKycRecords();
-    }
 
-    @GetMapping("/v1/customer/{customerNumber}")
-    public ResponseEntity<KycEntity> getKycByCustomerNumber(@PathVariable String customerNumber) {
-            Optional<KycEntity> customer = kycService.getCustomer(customerNumber);
-            return customer.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
+    private final KycResponse kycResponse = new KycResponse();
+
+    @PostMapping(value = "/v1/customer/subscribe", produces = "application/json")
+    public KycResponse saveKyc(@RequestBody KycRequest kyc) {
+        log.info("Received request to check loan status {}", kyc);
+        Optional<KycEntity> kycEntity = kycService.getCustomer(kyc.getCustomerNumber());
+        kycResponse.setStatus("successful");
+        if (kycEntity.isPresent()) {
+            kycResponse.setMessage("Successfully subscribed a customer");
+            log.info("Successfully subscribed a customer to credit scoring system {}", kycEntity);
+
+        } else {
+            kycResponse.setMessage("Customer with that customer number not found in the credit scoring system");
+            log.info("Customer with that customer number not found in the credit scoring system ");
+
         }
 
-    @PostMapping("/v1/customer/subscribe")
-    public Optional<KycEntity> saveKyc(@RequestBody KycEntity kyc) {
-        return kycService.getCustomer(kyc.getCustomerNumber());
+        kycResponse.setData(kycEntity);
+        return kycResponse;
     }
 }

@@ -24,7 +24,6 @@ public class MockController {
 
     @GetMapping(value = "/queryScore/{token}", produces = "application/json")
     public ScoreObj querScore(@PathVariable String token) {
-        System.out.println("Imefika");
         // Simulate delay between 1 and 7 seconds
         int delay = ThreadLocalRandom.current().nextInt(1, 8) * 1000; // Convert to milliseconds
         try {

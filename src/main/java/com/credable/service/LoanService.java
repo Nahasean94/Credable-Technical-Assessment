@@ -11,10 +11,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
-
+import java.util.UUID;
 
 
 @Service
@@ -32,16 +31,16 @@ public class LoanService {
         this.loanRepository = loanRepository;
     }
 
-    public List<LoanEntity> findLoanByCustomerNumber(String customerNumber) {
-        return loanRepository.findLoansByCustomerNumber((customerNumber));
-    }
-
     public LoanEntity findByCustomerNumberAndStatus(String loanId, LoanRequestStatus status) {
         return loanRepository.findByCustomerNumberAndStatus(loanId, status);
     }
 
     public void saveLoan(LoanEntity loan) {
         loanRepository.save(loan);
+    }
+
+    public Optional<LoanEntity> findById(UUID id) {
+       return loanRepository.findById(id);
     }
 
     @Async
@@ -79,15 +78,6 @@ public class LoanService {
         loanRepository.updateLoanStatusById(loan.getId(), LoanStatus.ACTIVE, LoanRequestStatus.APPROVED);
         //TODO send notification
 
-    }
-
-    public Optional<LoanEntity> getLoanStatus(Long id) {
-        return loanRepository.findById(id);
-    }
-
-    public Double sumLoanAmountByCustomerNumberAndStatusAndLoanRequestStatus(
-            String customerNumber, LoanStatus status, LoanRequestStatus loanRequestStatus) {
-        return loanRepository.sumLoanAmountByCustomerNumberAndStatusAndLoanRequestStatus(customerNumber, status, loanRequestStatus);
     }
 
     private ScoreObj queryScore(  String token,int retrials) {
