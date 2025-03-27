@@ -1,4 +1,4 @@
-package com.credable.external;
+package com.credable.external.soap;
 
 import org.apache.http.HttpRequestInterceptor;
 import org.apache.http.auth.AuthScope;
@@ -11,10 +11,7 @@ import org.apache.http.impl.client.HttpClients;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.oxm.jaxb.Jaxb2Marshaller;
-import org.springframework.stereotype.Component;
 import org.springframework.ws.client.core.WebServiceTemplate;
-import org.springframework.ws.client.core.support.WebServiceGatewaySupport;
-import org.springframework.ws.soap.client.core.SoapActionCallback;
 import org.springframework.ws.transport.http.HttpComponentsMessageSender;
 import org.springframework.ws.client.support.interceptor.ClientInterceptor;
 import org.springframework.ws.client.support.interceptor.ClientInterceptorAdapter;
@@ -28,7 +25,7 @@ public class SoapConfig {
     @Bean
     public Jaxb2Marshaller marshaller() {
         Jaxb2Marshaller marshaller = new Jaxb2Marshaller();
-        marshaller.setContextPath("com.credable.external.wsdls");
+        marshaller.setContextPath("com.credable.external.soap.wsdls");
         return marshaller;
     }
 

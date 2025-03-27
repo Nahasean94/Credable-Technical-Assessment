@@ -1,4 +1,4 @@
-package com.credable.external.wsdls;
+package com.credable.external.soap.wsdls;
 
 import java.util.ArrayList;
 import java.util.List;

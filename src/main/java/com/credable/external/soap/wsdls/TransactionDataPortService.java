@@ -1,4 +1,4 @@
-package com.credable.external.wsdls;
+package com.credable.external.soap.wsdls;
 
 import java.net.MalformedURLException;
 import java.net.URL;

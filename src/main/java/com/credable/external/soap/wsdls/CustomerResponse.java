@@ -1,4 +1,4 @@
-package com.credable.external.wsdls;
+package com.credable.external.soap.wsdls;
 
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -9,7 +9,6 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.xml.datatype.XMLGregorianCalendar;
-import java.time.LocalDateTime;
 
 
 /**

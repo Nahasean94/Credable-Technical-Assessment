@@ -1,6 +1,6 @@
 package com.credable.service;
 
-import com.credable.external.CustomerSoapClient;
+import com.credable.external.soap.CustomerSoapClient;
 import com.credable.repository.kyc.KycEntity;
 import com.credable.repository.kyc.KycRepository;
 import org.springframework.beans.factory.annotation.Autowired;

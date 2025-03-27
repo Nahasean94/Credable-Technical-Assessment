@@ -1,29 +1,16 @@
-package com.credable.external;
+package com.credable.external.soap;
 
-import com.credable.external.wsdls.CustomerRequest;
-import com.credable.external.wsdls.CustomerResponse;
+import com.credable.external.soap.wsdls.CustomerRequest;
+import com.credable.external.soap.wsdls.CustomerResponse;
 import com.credable.repository.kyc.KycEntity;
-import com.oracle.webservices.api.message.MessageContext;
-import org.apache.http.impl.client.HttpClients;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
-import org.springframework.ws.WebServiceMessage;
-import org.springframework.ws.client.core.WebServiceMessageCallback;
 import org.springframework.ws.client.core.WebServiceTemplate;
-import org.springframework.ws.client.support.interceptor.ClientInterceptorAdapter;
-import org.springframework.ws.soap.SoapHeader;
-import org.springframework.ws.soap.SoapMessage;
 import org.springframework.ws.soap.client.SoapFaultClientException;
 import org.springframework.ws.soap.client.core.SoapActionCallback;
-import org.springframework.ws.transport.context.TransportContextHolder;
-import org.springframework.ws.transport.http.HttpComponentsMessageSender;
-import org.springframework.ws.transport.http.HttpUrlConnection;
 
 import javax.xml.datatype.XMLGregorianCalendar;
-import javax.xml.transform.Transformer;
-import javax.xml.transform.TransformerFactory;
-import javax.xml.transform.stream.StreamResult;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.Optional;

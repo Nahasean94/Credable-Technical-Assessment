@@ -1,4 +1,4 @@
-package com.credable.external.wsdls;
+package com.credable.external.soap.wsdls;
 
 import jakarta.xml.bind.annotation.XmlEnum;
 import jakarta.xml.bind.annotation.XmlType;

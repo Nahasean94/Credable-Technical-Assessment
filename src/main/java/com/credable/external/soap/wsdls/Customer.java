@@ -1,4 +1,4 @@
-package com.credable.external.wsdls;
+package com.credable.external.soap.wsdls;
 
 import javax.xml.datatype.XMLGregorianCalendar;
 import jakarta.xml.bind.annotation.XmlAccessType;

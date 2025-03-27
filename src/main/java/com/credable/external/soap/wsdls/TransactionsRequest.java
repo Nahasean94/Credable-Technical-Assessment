@@ -1,12 +1,10 @@
-package com.credable.external.wsdls;
+package com.credable.external.soap.wsdls;
 
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlRootElement;
 import jakarta.xml.bind.annotation.XmlType;
-import lombok.Getter;
-import lombok.Setter;
 
 
 /**
@@ -28,16 +26,38 @@ import lombok.Setter;
  *
  *
  */
-@Setter
-@Getter
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
     "customerNumber"
 })
-@XmlRootElement(name = "CustomerRequest", namespace = "http://credable.io/cbs/customer")
-public class CustomerRequest {
+@XmlRootElement(name = "com.credable.external.wsdls.TransactionsRequest")
+public class TransactionsRequest {
 
-    @XmlElement(namespace = "http://credable.io/cbs/customer", required = true)
+    @XmlElement(required = true)
     protected String customerNumber;
+
+    /**
+     * Gets the value of the customerNumber property.
+     *
+     * @return
+     *     possible object is
+     *     {@link String }
+     *
+     */
+    public String getCustomerNumber() {
+        return customerNumber;
+    }
+
+    /**
+     * Sets the value of the customerNumber property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *
+     */
+    public void setCustomerNumber(String value) {
+        this.customerNumber = value;
+    }
 
 }

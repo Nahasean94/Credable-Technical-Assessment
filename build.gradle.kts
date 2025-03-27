@@ -20,15 +20,16 @@ tasks.register<JavaExec>("wsimport") {
 	val wsdlDir = file("src/main/resources/wsdl")
 	val wsdlFiles = wsdlDir.listFiles()?.filter { it.extension == "wsdl" }?.map { it.absolutePath } ?: emptyList()
 
-	args = listOf("-keep", "-s", "src/main/java/com/credable/external/wsdl") +
-			wsdlFiles.flatMap { listOf("-p", "com.credable.external.wsdl.${it.substringAfterLast('/').removeSuffix(".wsdl")}", it) }
+	args = listOf("-keep", "-s", "src/main/java/com/credable/external/soap/wsdls") +
+			wsdlFiles.flatMap { listOf("-p", "com.credable.external.soap.wsdls.${it.substringAfterLast('/').removeSuffix
+				(".wsdl")}", it) }
 }
 
 sourceSets.main {
-	java.srcDir("src/main/java/com/credable/external/wsdl")
+	java.srcDir("src/main/java/com/credable/external/soap/wsdls")
 }
 tasks.withType<JavaCompile> {
-	source("src/main/java/com/credable/external/wsdl")
+	source("src/main/java/com/credable/external/soap/wsdls")
 }
 
 
