@@ -1,6 +1,7 @@
-package com.credable.external.rest.mock_data;
+package com.credable.external.rest.mock_data.customer;
 
 
+import com.credable.external.soap.wsdl.Gender;
 import com.credable.external.soap.wsdl.IdType;
 import com.credable.external.soap.wsdl.Status;
 import lombok.Getter;
@@ -15,7 +16,7 @@ public class CustomerObj {
     private String firstName;
     private String middleName;
     private String lastName;
-    private String gender;
+    private Gender gender;
     private IdType idType;
     private String idNumber;
     private String email;
@@ -28,7 +29,7 @@ public class CustomerObj {
 
     // Constructor
     public CustomerObj(  String customerNumber, String firstName, String middleName, String lastName,
-                       String gender, IdType idType, String idNumber, String email, String mobile,
+                         Gender gender, IdType idType, String idNumber, String email, String mobile,
                        Double monthlyIncome, Status status, LocalDateTime dob, LocalDateTime createdAt,
                        LocalDateTime updatedAt) {
 

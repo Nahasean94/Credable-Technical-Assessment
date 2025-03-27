@@ -1,6 +1,8 @@
 package com.credable.repository.loan;
 
 
+import com.credable.model.LoanRequestStatus;
+import com.credable.model.LoanStatus;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -14,14 +16,15 @@ import java.time.LocalDateTime;
 @Data
 @Table(name = "loan")
 public class LoanEntity {
-//    @GeneratedValue(strategy = GenerationType.UUID)
     @jakarta.persistence.Id
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String customerNumber;
-    private Long loanAmount;
-    private Long amountPaid;
-    private String status;
+    private Double loanAmount;
+    private LoanStatus status;
+    private Integer retries;
+    private LoanRequestStatus loanRequestStatus;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
 

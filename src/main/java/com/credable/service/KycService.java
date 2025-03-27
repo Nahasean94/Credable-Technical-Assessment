@@ -1,7 +1,7 @@
 package com.credable.service;
 
-import com.credable.external.rest.mock_data.CustomerData;
-import com.credable.external.rest.mock_data.CustomerObj;
+import com.credable.external.rest.mock_data.customer.CustomerData;
+import com.credable.external.rest.mock_data.customer.CustomerObj;
 import com.credable.repository.kyc.IKycRepository;
 import com.credable.repository.kyc.KycEntity;
 import org.springframework.beans.factory.annotation.Autowired;

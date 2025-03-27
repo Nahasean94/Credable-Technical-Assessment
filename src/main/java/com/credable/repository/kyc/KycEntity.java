@@ -1,7 +1,6 @@
 package com.credable.repository.kyc;
 
-
-
+import com.credable.external.soap.wsdl.Gender;
 import com.credable.external.soap.wsdl.IdType;
 import com.credable.external.soap.wsdl.Status;
 import jakarta.persistence.*;
@@ -24,7 +23,7 @@ public class KycEntity {
     private String firstName;
     private String middleName;
     private String lastName;
-    private String gender;
+    private Gender gender;
     private IdType idType;
     private String idNumber;
     private String email;

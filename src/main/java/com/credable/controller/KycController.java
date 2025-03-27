@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/api/kyc")
+@RequestMapping("/api")
 public class KycController {
 
     @Autowired
@@ -23,14 +23,14 @@ public class KycController {
         return kycService.getAllKycRecords();
     }
 
-    @GetMapping("/{customerNumber}")
+    @GetMapping("/vi/customer/{customerNumber}")
     public ResponseEntity<KycEntity> getKycByCustomerNumber(@PathVariable String customerNumber) {
             Optional<KycEntity> customer = kycService.getCustomer(customerNumber);
             return customer.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
         }
 
-    @PostMapping
-    public KycEntity saveKyc(@RequestBody KycEntity kyc) {
-        return kycService.saveKyc(kyc);
+    @PostMapping("/vi/customer/subscribe")
+    public Optional<KycEntity> saveKyc(@RequestBody KycEntity kyc) {
+        return kycService.getCustomer(kyc.getCustomerNumber());
     }
 }
