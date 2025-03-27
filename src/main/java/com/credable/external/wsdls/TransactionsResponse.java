@@ -1,3 +1,5 @@
+package com.credable.external.wsdls;
+
 import java.util.ArrayList;
 import java.util.List;
 import jakarta.xml.bind.annotation.XmlAccessType;
@@ -29,7 +31,7 @@ import jakarta.xml.bind.annotation.XmlType;
 @XmlType(name = "", propOrder = {
     "transactions"
 })
-@XmlRootElement(name = "TransactionsResponse")
+@XmlRootElement(name = "com.credable.external.wsdls.TransactionsResponse")
 public class TransactionsResponse {
 
     protected List<TransactionData> transactions;

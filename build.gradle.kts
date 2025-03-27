@@ -74,6 +74,8 @@ dependencies {
 	implementation("jakarta.xml.ws:jakarta.xml.ws-api:3.0.0")
 	implementation("com.sun.xml.ws:jaxws-rt:3.0.0")
 	implementation("com.sun.xml.ws:jaxws-tools:3.0.0")
+	implementation ("org.apache.httpcomponents:httpclient:4.5.14")
+
 
 
 }

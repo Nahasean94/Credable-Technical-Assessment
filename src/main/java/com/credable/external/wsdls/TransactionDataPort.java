@@ -1,3 +1,5 @@
+package com.credable.external.wsdls;
+
 import jakarta.jws.WebMethod;
 import jakarta.jws.WebParam;
 import jakarta.jws.WebResult;
@@ -12,7 +14,7 @@ import jakarta.xml.bind.annotation.XmlSeeAlso;
  * Generated source version: 3.0
  *
  */
-@WebService(name = "TransactionDataPort", targetNamespace = "http://credable.io/cbs/transaction")
+@WebService(name = "com.credable.external.wsdls.TransactionDataPort", targetNamespace = "http://credable.io/cbs/transaction")
 @SOAPBinding(parameterStyle = SOAPBinding.ParameterStyle.BARE)
 @XmlSeeAlso({
     ObjectFactory.class
@@ -24,12 +26,12 @@ public interface TransactionDataPort {
      *
      * @param transactionsRequest
      * @return
-     *     returns TransactionsResponse
+     *     returns com.credable.external.wsdls.TransactionsResponse
      */
     @WebMethod(operationName = "Transactions")
-    @WebResult(name = "TransactionsResponse", targetNamespace = "http://credable.io/cbs/transaction", partName = "TransactionsResponse")
+    @WebResult(name = "com.credable.external.wsdls.TransactionsResponse", targetNamespace = "http://credable.io/cbs/transaction", partName = "com.credable.external.wsdls.TransactionsResponse")
     public TransactionsResponse transactions(
-        @WebParam(name = "TransactionsRequest", targetNamespace = "http://credable.io/cbs/transaction", partName = "TransactionsRequest")
+        @WebParam(name = "com.credable.external.wsdls.TransactionsRequest", targetNamespace = "http://credable.io/cbs/transaction", partName = "com.credable.external.wsdls.TransactionsRequest")
         TransactionsRequest transactionsRequest);
 
 }

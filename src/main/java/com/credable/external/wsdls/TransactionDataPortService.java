@@ -1,3 +1,5 @@
+package com.credable.external.wsdls;
+
 import java.net.MalformedURLException;
 import java.net.URL;
 import javax.xml.namespace.QName;
@@ -14,14 +16,14 @@ import jakarta.xml.ws.WebServiceFeature;
  * Generated source version: 3.0
  *
  */
-@WebServiceClient(name = "TransactionDataPortService", targetNamespace = "http://credable.io/cbs/transaction", wsdlLocation = "file:/Users/sean/Projects/Credable-Technical-Assessment/src/main/resources/wsdl/transactionWsdl.wsdl")
+@WebServiceClient(name = "com.credable.external.wsdls.TransactionDataPortService", targetNamespace = "http://credable.io/cbs/transaction", wsdlLocation = "file:/Users/sean/Projects/Credable-Technical-Assessment/src/main/resources/wsdl/transactionWsdl.wsdl")
 public class TransactionDataPortService
     extends Service
 {
 
     private static final URL TRANSACTIONDATAPORTSERVICE_WSDL_LOCATION;
     private static final WebServiceException TRANSACTIONDATAPORTSERVICE_EXCEPTION;
-    private static final QName TRANSACTIONDATAPORTSERVICE_QNAME = new QName("http://credable.io/cbs/transaction", "TransactionDataPortService");
+    private static final QName TRANSACTIONDATAPORTSERVICE_QNAME = new QName("http://credable.io/cbs/transaction", "com.credable.external.wsdls.TransactionDataPortService");
 
     static {
         URL url = null;
@@ -62,7 +64,7 @@ public class TransactionDataPortService
     /**
      *
      * @return
-     *     returns TransactionDataPort
+     *     returns com.credable.external.wsdls.TransactionDataPort
      */
     @WebEndpoint(name = "TransactionDataPortSoap11")
     public TransactionDataPort getTransactionDataPortSoap11() {
@@ -74,7 +76,7 @@ public class TransactionDataPortService
      * @param features
      *     A list of {@link jakarta.xml.ws.WebServiceFeature} to configure on the proxy.  Supported features not in the <code>features</code> parameter will have their default values.
      * @return
-     *     returns TransactionDataPort
+     *     returns com.credable.external.wsdls.TransactionDataPort
      */
     @WebEndpoint(name = "TransactionDataPortSoap11")
     public TransactionDataPort getTransactionDataPortSoap11(WebServiceFeature... features) {

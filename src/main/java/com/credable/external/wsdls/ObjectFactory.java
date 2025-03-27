@@ -1,3 +1,5 @@
+package com.credable.external.wsdls;
+
 import jakarta.xml.bind.annotation.XmlRegistry;
 
 
@@ -5,7 +7,7 @@ import jakarta.xml.bind.annotation.XmlRegistry;
  * This object contains factory methods for each
  * Java content interface and Java element interface
  * generated in the com.credable.external.wsdl.customerWsdl package.
- * <p>An ObjectFactory allows you to programmatically
+ * <p>An com.credable.external.wsdls.ObjectFactory allows you to programmatically
  * construct new instances of the Java representation
  * for XML content. The Java representation of XML
  * content can consist of schema derived interfaces
@@ -20,7 +22,7 @@ public class ObjectFactory {
 
 
     /**
-     * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: com.credable.external.wsdl.customerWsdl
+     * Create a new com.credable.external.wsdls.ObjectFactory that can be used to create new instances of schema derived classes for package: com.credable.external.wsdl.customerWsdl
      *
      */
     public ObjectFactory() {

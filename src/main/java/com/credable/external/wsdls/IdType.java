@@ -1,3 +1,5 @@
+package com.credable.external.wsdls;
+
 import jakarta.xml.bind.annotation.XmlEnum;
 import jakarta.xml.bind.annotation.XmlType;
 

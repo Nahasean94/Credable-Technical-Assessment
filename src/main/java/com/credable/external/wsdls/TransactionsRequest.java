@@ -1,3 +1,5 @@
+package com.credable.external.wsdls;
+
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
@@ -15,7 +17,7 @@ import jakarta.xml.bind.annotation.XmlType;
  *   <complexContent>
  *     <restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       <sequence>
- *         <element name="customer" type="{http://credable.io/cbs/customer}customer"/>
+ *         <element name="customerNumber" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *       </sequence>
  *     </restriction>
  *   </complexContent>
@@ -26,36 +28,36 @@ import jakarta.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "customer"
+    "customerNumber"
 })
-@XmlRootElement(name = "CustomerResponse", namespace = "http://credable.io/cbs/customer")
-public class CustomerResponse {
+@XmlRootElement(name = "com.credable.external.wsdls.TransactionsRequest")
+public class TransactionsRequest {
 
-    @XmlElement(namespace = "http://credable.io/cbs/customer", required = true)
-    protected Customer customer;
+    @XmlElement(required = true)
+    protected String customerNumber;
 
     /**
-     * Gets the value of the customer property.
+     * Gets the value of the customerNumber property.
      *
      * @return
      *     possible object is
-     *     {@link Customer }
+     *     {@link String }
      *
      */
-    public Customer getCustomer() {
-        return customer;
+    public String getCustomerNumber() {
+        return customerNumber;
     }
 
     /**
-     * Sets the value of the customer property.
+     * Sets the value of the customerNumber property.
      *
      * @param value
      *     allowed object is
-     *     {@link Customer }
+     *     {@link String }
      *
      */
-    public void setCustomer(Customer value) {
-        this.customer = value;
+    public void setCustomerNumber(String value) {
+        this.customerNumber = value;
     }
 
 }
