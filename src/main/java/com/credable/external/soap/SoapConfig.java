@@ -25,7 +25,7 @@ public class SoapConfig {
     @Bean
     public Jaxb2Marshaller marshaller() {
         Jaxb2Marshaller marshaller = new Jaxb2Marshaller();
-        marshaller.setContextPath("com.credable.external.soap.wsdls");
+        marshaller.setContextPath("com.credable.external.soap.wsdl");
         return marshaller;
     }
 

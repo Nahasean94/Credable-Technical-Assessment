@@ -1,4 +1,4 @@
-package com.credable.external.soap.wsdls;
+package com.credable.external.soap.wsdl;
 
 import jakarta.jws.WebMethod;
 import jakarta.jws.WebParam;

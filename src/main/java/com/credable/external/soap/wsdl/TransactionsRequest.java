@@ -1,4 +1,4 @@
-package com.credable.external.soap.wsdls;
+package com.credable.external.soap.wsdl;
 
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;

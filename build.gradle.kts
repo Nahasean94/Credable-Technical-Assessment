@@ -13,23 +13,23 @@ version = "0.0.1-SNAPSHOT"
 
 tasks.register<JavaExec>("wsimport") {
 	group = "wsdl"
-	description = "Generate Java classes from all WSDLs in a folder"
+	description = "Generate Java classes from all Wsdl in a folder"
 	mainClass.set("com.sun.tools.ws.WsImport")
 	classpath = sourceSets.main.get().compileClasspath
 
 	val wsdlDir = file("src/main/resources/wsdl")
 	val wsdlFiles = wsdlDir.listFiles()?.filter { it.extension == "wsdl" }?.map { it.absolutePath } ?: emptyList()
 
-	args = listOf("-keep", "-s", "src/main/java/com/credable/external/soap/wsdls") +
-			wsdlFiles.flatMap { listOf("-p", "com.credable.external.soap.wsdls.${it.substringAfterLast('/').removeSuffix
+	args = listOf("-keep", "-s", "src/main/java/com/credable/external/soap/wsdl") +
+			wsdlFiles.flatMap { listOf("-p", "com.credable.external.soap.wsdl.${it.substringAfterLast('/').removeSuffix
 				(".wsdl")}", it) }
 }
 
 sourceSets.main {
-	java.srcDir("src/main/java/com/credable/external/soap/wsdls")
+	java.srcDir("src/main/java/com/credable/external/soap/wsdl")
 }
 tasks.withType<JavaCompile> {
-	source("src/main/java/com/credable/external/soap/wsdls")
+	source("src/main/java/com/credable/external/soap/wsdl")
 }
 
 

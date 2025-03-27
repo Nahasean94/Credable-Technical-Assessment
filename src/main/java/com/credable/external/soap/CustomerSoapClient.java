@@ -1,7 +1,8 @@
 package com.credable.external.soap;
 
-import com.credable.external.soap.wsdls.CustomerRequest;
-import com.credable.external.soap.wsdls.CustomerResponse;
+import com.credable.external.soap.wsdl.CustomerRequest;
+import com.credable.external.soap.wsdl.CustomerResponse;
+import com.credable.external.soap.wsdl.IdType;
 import com.credable.repository.kyc.KycEntity;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -64,9 +65,9 @@ public class CustomerSoapClient {
             customer.setLastName(response.getLastName());
             customer.setEmail(response.getEmail());
             customer.setMobile(response.getMobile());
-            customer.setStatus  (response.getStatus().toString());
+            customer.setStatus  ( response.getStatus());
             customer.setIdNumber(response.getIdNumber());
-            customer.setIdType(response.getIdType().toString());
+            customer.setIdType(response.getIdType());
             customer.setMonthlyIncome(response.getMonthlyIncome());
             customer.setDob(convertToLocalDateTime(response.getDob()));
             customer.setCreatedAt(LocalDateTime.now());

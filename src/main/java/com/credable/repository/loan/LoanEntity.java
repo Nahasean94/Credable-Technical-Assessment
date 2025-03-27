@@ -14,7 +14,7 @@ import java.time.LocalDateTime;
 @Data
 @Table(name = "loan")
 public class LoanEntity {
-    @GeneratedValue(strategy = GenerationType.UUID)
+//    @GeneratedValue(strategy = GenerationType.UUID)
     @jakarta.persistence.Id
     @Id
     private Long id;
