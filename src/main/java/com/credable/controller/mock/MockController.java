@@ -22,8 +22,9 @@ public class MockController {
     private final ScoreData scoreData = new ScoreData();
 
 
-    @GetMapping("/querScore/{token}")
+    @GetMapping(value = "/queryScore/{token}", produces = "application/json")
     public ScoreObj querScore(@PathVariable String token) {
+        System.out.println("Imefika");
         // Simulate delay between 1 and 7 seconds
         int delay = ThreadLocalRandom.current().nextInt(1, 8) * 1000; // Convert to milliseconds
         try {
@@ -31,13 +32,16 @@ public class MockController {
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt();
         }
-
-        return scoreData.findCustomerByNumber(token);
+        ScoreObj obj= scoreData.findCustomerByNumber(token);
+        System.out.println(obj.getScore()+ " is the score");
+        return obj;
     }
 
-    @GetMapping("/initiateQueryScore/{customerNumber}")
+    @GetMapping(value = "/initiateQueryScore/{customerNumber}", produces = "application/json")
     public TokenModel generateToken(@PathVariable String customerNumber) {
-        return TokenModel.builder().token(UUID.randomUUID().toString()).build();
+        TokenModel tokenModel = new TokenModel();
+        tokenModel.setToken(UUID.randomUUID().toString());
+        return tokenModel;
 
     }
 

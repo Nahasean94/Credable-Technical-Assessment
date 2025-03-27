@@ -3,10 +3,7 @@ package com.credable.repository.loan;
 
 import com.credable.model.LoanRequestStatus;
 import com.credable.model.LoanStatus;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Data;
 import org.springframework.data.annotation.Id;
 
@@ -22,8 +19,10 @@ public class LoanEntity {
     private Long id;
     private String customerNumber;
     private Double loanAmount;
+    @Enumerated(EnumType.STRING)
     private LoanStatus status;
     private Integer retries;
+    @Enumerated(EnumType.STRING)
     private LoanRequestStatus loanRequestStatus;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;

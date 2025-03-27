@@ -13,9 +13,16 @@ import java.util.Optional;
 
 @Repository
 public interface ILoanRepository extends JpaRepository<LoanEntity, Long> {
-    Optional<LoanEntity> findById(Long id);
-    List<LoanEntity> findLoansByCustomerNumber(String customerNumber);
-    LoanEntity findByCustomerNumberAndStatus(String loanId, LoanRequestStatus status);
+    @Query("SELECT l FROM LoanEntity l WHERE l.id = :id")
+    Optional<LoanEntity> findById(@Param("id") Long id);
+
+    @Query("SELECT l FROM LoanEntity l WHERE l.customerNumber = :customerNumber")
+    List<LoanEntity> findLoansByCustomerNumber(@Param("customerNumber") String customerNumber);
+
+    @Query("SELECT l FROM LoanEntity l WHERE l.customerNumber = :customerNumber AND l.loanRequestStatus = :status")
+    LoanEntity findByCustomerNumberAndStatus(@Param("customerNumber") String customerNumber,
+                                             @Param("status") LoanRequestStatus status);
+
 
     @Query("SELECT COALESCE(SUM(l.loanAmount), 0) FROM LoanEntity l WHERE l.customerNumber = :customerNumber AND l.status = :status AND l.loanRequestStatus = :loanRequestStatus")
 

@@ -23,13 +23,13 @@ public class KycController {
         return kycService.getAllKycRecords();
     }
 
-    @GetMapping("/vi/customer/{customerNumber}")
+    @GetMapping("/v1/customer/{customerNumber}")
     public ResponseEntity<KycEntity> getKycByCustomerNumber(@PathVariable String customerNumber) {
             Optional<KycEntity> customer = kycService.getCustomer(customerNumber);
             return customer.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
         }
 
-    @PostMapping("/vi/customer/subscribe")
+    @PostMapping("/v1/customer/subscribe")
     public Optional<KycEntity> saveKyc(@RequestBody KycEntity kyc) {
         return kycService.getCustomer(kyc.getCustomerNumber());
     }
