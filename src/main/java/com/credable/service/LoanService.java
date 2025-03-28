@@ -92,6 +92,10 @@ public class LoanService {
         double availableLoanAmount = score.getLimitAmount() - loanAmount;
 
         if (availableLoanAmount < loan.getLoanAmount()) {
+            log.info("About to update loan status");
+
+            loanRepository.updateLoanStatusById(loan.getId(), LoanStatus.INACTIVE, LoanRequestStatus.REJECTED);
+            log.info("Updated loan status");
             //TODO send notification that they have exceeded loan limit
             return;
         }
@@ -111,12 +115,12 @@ public class LoanService {
         if (scoreObj == null) {
             if (retrials <= 2) {
                //Increase the the retrials and retru
-                queryScore(token, retrials + 1);
+                queryScore(token, ++retrials );
             } else {
                 return null;
             }
         }
-        System.out.println(scoreObj + " is the score object");
+
         return scoreObj;
     }
 
