@@ -26,6 +26,13 @@ Ensure you have the following installed on your system:
        git clone https://github.com/Nahasean94/Credable-Technical-Assessment.git
        cd Credable-Technical-Assessment
 ```
+
+The database used is Postgres. You can use a docker container or otherwise, and setup a username and password, which 
+you can update in the application.properties file.
+
+Once you run the application, you can access the Swagger API documentation here:
+http://localhost:8190/swagger-ui/index.html
+
 The project is simple and missing some key features that should be present in a production environment. Some of 
 these features include:
 1. Event management system- for queueing requests and make the requests asynchronous 
@@ -34,3 +41,5 @@ these features include:
 4. Performance e.g use of multi threading
 5. Secure config management especially for credentials
 6. Monitoring tools
+
+
