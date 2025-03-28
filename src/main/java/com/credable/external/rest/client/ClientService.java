@@ -9,9 +9,9 @@ import org.springframework.web.client.RestTemplate;
 @Service
 public class ClientService {
 
-    @Value("${scoring.api.client-create-url}")
+    @Value("${scoring.api.base-url}")
     private String createClientUrl;
-
+    @Autowired
     private final RestTemplate restTemplate;
 
     @Autowired

@@ -68,5 +68,5 @@ class TransactionData {
     private BigDecimal transactionValue;
     private Date updatedAt;
 
-    // Getters and setters for all fields
+
 }
