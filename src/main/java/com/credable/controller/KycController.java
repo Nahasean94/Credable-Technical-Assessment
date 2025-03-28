@@ -48,7 +48,7 @@ public class KycController {
         kycResponse.setData(kycEntity);
         return kycResponse;
         }catch (Exception e) {
-            log.error("An error occurred while subscribing user to loan service", e.getCause());
+            log.error("An error occurred while subscribing user to loan service: {}", e.getMessage());
             kycResponse.setStatus("failed");
             kycResponse.setMessage("An error occurred while subscribing user to loan service");
             kycResponse.setData(Optional.empty());

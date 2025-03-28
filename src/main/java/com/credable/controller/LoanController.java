@@ -59,7 +59,7 @@ public class LoanController {
             return customerLoanResponse;
 
         } catch (Exception e) {
-            log.error("An error occurred while applying for a loan", e.getCause());
+            log.error("An error occurred while applying for a loan: {}", e.getMessage());
             customerLoanResponse.setStatus("failed");
             customerLoanResponse.setMessage("An error occurred while applying for a loan");
             customerLoanResponse.setData(null);
@@ -93,7 +93,7 @@ public class LoanController {
 
             return customerLoanResponse;
         } catch (Exception e) {
-            log.error("An error occurred while checking loan status", e.getCause());
+            log.error("An error occurred while checking loan status: {}", e.getMessage());
             customerLoanResponse.setStatus("failed");
             customerLoanResponse.setMessage("An error occurred while checking loan status");
             customerLoanResponse.setData(null);
