@@ -25,6 +25,9 @@ public class KycController {
     @PostMapping(value = "/v1/customer/subscribe", produces = "application/json")
     public KycResponse saveKyc(@RequestBody KycRequest kyc) {
         log.info("Received request to check loan status {}", kyc);
+        try {
+
+
         Optional<KycEntity> kycEntity = kycService.getCustomer(kyc.getCustomerNumber());
         kycResponse.setStatus("successful");
         if (kycEntity.isPresent()) {
@@ -39,5 +42,13 @@ public class KycController {
 
         kycResponse.setData(kycEntity);
         return kycResponse;
+        }catch (Exception e) {
+            log.error("An error occurred while subscribing user to loan service", e.getCause());
+            kycResponse.setStatus("failed");
+            kycResponse.setMessage("An error occurred while subscribing user to loan service");
+            kycResponse.setData(Optional.empty());
+            return kycResponse;
+
+        }
     }
 }

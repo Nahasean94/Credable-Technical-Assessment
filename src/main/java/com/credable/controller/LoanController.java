@@ -27,6 +27,7 @@ public class LoanController {
     @PostMapping(value = "/v1/loan/request", produces = "application/json")
     public CustomerLoanResponse requestLoan(@RequestBody CustomerLoanRequest loan) {
         log.info("Received request for loan {}", loan);
+        try {
         LoanEntity custLoan = loanService.findByCustomerNumberAndStatus(loan.getCustomerNumber(), LoanRequestStatus.PENDING);
         if (custLoan != null) {
             log.info("User already has a pending loan request. Please try again later");
@@ -51,30 +52,44 @@ public class LoanController {
 
         return customerLoanResponse;
 
+    } catch (Exception e) {
+        log.error("An error occurred while applying for a loan", e.getCause());
+        customerLoanResponse.setStatus("failed");
+        customerLoanResponse.setMessage("An error occurred while applying for a loan");
+        customerLoanResponse.setData(null);
+        return customerLoanResponse;
 
+    }
     }
 
     @GetMapping(value = "/v1/loan/status/{loanId}", produces = "application/json")
     public CustomerLoanResponse checkLoanStatus(@PathVariable UUID loanId) {
         log.info("Received request to check loan status {}", loanId);
+        try {
+            Optional<LoanEntity> custLoan = loanService.findById(loanId);
+            if (custLoan.isPresent()) {
+                customerLoanResponse.setStatus("successful");
+                customerLoanResponse.setMessage("Successfully found a loan");
+                log.info("Successfully found a loan {}", customerLoanResponse);
 
-        Optional<LoanEntity> custLoan = loanService.findById(loanId);
-        if (custLoan.isPresent()) {
-            customerLoanResponse.setStatus("successful");
-            customerLoanResponse.setMessage("Successfully found a loan");
-            log.info("Successfully found a loan {}", customerLoanResponse);
+            } else {
+                customerLoanResponse.setStatus("failed");
+                customerLoanResponse.setMessage("Failed to find a loan with that id");
+                log.info("Failed to find a loan with that id {}", customerLoanResponse);
 
-        }else {
+            }
+            customerLoanResponse.setData(custLoan.orElse(null));
+
+
+            return customerLoanResponse;
+        } catch (Exception e) {
+            log.error("An error occurred while checking loan status", e.getCause());
             customerLoanResponse.setStatus("failed");
-            customerLoanResponse.setMessage("Failed to find a loan with that id");
-            log.info("Failed to find a loan with that id {}", customerLoanResponse);
+            customerLoanResponse.setMessage("An error occurred while checking loan status");
+            customerLoanResponse.setData(null);
+            return customerLoanResponse;
 
         }
-        customerLoanResponse.setData(custLoan.orElse(null));
-
-
-        return customerLoanResponse;
-
 
     }
 }
