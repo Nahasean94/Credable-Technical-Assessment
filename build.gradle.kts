@@ -84,6 +84,8 @@ dependencies {
 		}
 		implementation("org.apache.httpcomponents:httpclient:4.5.14")
 		implementation("wsdl4j:wsdl4j")
+		implementation ("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.8.6")
+
 	}
 
 }
