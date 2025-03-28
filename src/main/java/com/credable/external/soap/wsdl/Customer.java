@@ -5,8 +5,7 @@ import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlSchemaType;
 import jakarta.xml.bind.annotation.XmlType;
-import lombok.Getter;
-import lombok.Setter;
+
 
 
 /**
@@ -43,8 +42,7 @@ import lombok.Setter;
  *
  *
  */
-@Setter
-@Getter
+
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "customer", namespace = "http://credable.io/cbs/customer", propOrder = {
     "createdAt",
@@ -101,6 +99,134 @@ public class Customer {
 
     @XmlSchemaType(name = "string")
     protected Status status;
+
+    public XMLGregorianCalendar getDob() {
+        return dob;
+    }
+
+    public void setDob(XMLGregorianCalendar dob) {
+        this.dob = dob;
+    }
+
+    public XMLGregorianCalendar getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(XMLGregorianCalendar createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public XMLGregorianCalendar getCreatedDate() {
+        return createdDate;
+    }
+
+    public void setCreatedDate(XMLGregorianCalendar createdDate) {
+        this.createdDate = createdDate;
+    }
+
+    public String getCustomerNumber() {
+        return customerNumber;
+    }
+
+    public void setCustomerNumber(String customerNumber) {
+        this.customerNumber = customerNumber;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public Gender getGender() {
+        return gender;
+    }
+
+    public void setGender(Gender gender) {
+        this.gender = gender;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getIdNumber() {
+        return idNumber;
+    }
+
+    public void setIdNumber(String idNumber) {
+        this.idNumber = idNumber;
+    }
+
+    public IdType getIdType() {
+        return idType;
+    }
+
+    public void setIdType(IdType idType) {
+        this.idType = idType;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public String getMiddleName() {
+        return middleName;
+    }
+
+    public void setMiddleName(String middleName) {
+        this.middleName = middleName;
+    }
+
+    public String getMobile() {
+        return mobile;
+    }
+
+    public void setMobile(String mobile) {
+        this.mobile = mobile;
+    }
+
+    public double getMonthlyIncome() {
+        return monthlyIncome;
+    }
+
+    public void setMonthlyIncome(double monthlyIncome) {
+        this.monthlyIncome = monthlyIncome;
+    }
+
+    public Status getStatus() {
+        return status;
+    }
+
+    public void setStatus(Status status) {
+        this.status = status;
+    }
+
+    public XMLGregorianCalendar getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public void setUpdatedAt(XMLGregorianCalendar updatedAt) {
+        this.updatedAt = updatedAt;
+    }
 
     @XmlSchemaType(name = "dateTime")
     protected XMLGregorianCalendar updatedAt;

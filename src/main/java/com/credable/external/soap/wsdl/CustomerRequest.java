@@ -5,8 +5,6 @@ import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlRootElement;
 import jakarta.xml.bind.annotation.XmlType;
-import lombok.Getter;
-import lombok.Setter;
 
 
 /**
@@ -28,8 +26,7 @@ import lombok.Setter;
  *
  *
  */
-@Setter
-@Getter
+
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
     "customerNumber"
@@ -40,4 +37,7 @@ public class CustomerRequest {
     @XmlElement(namespace = "http://credable.io/cbs/customer", required = true)
     protected String customerNumber;
 
+    public void setCustomerNumber(String customerNumber) {
+        this.customerNumber = customerNumber;
+    }
 }

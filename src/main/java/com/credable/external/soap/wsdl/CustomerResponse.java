@@ -5,8 +5,6 @@ import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlRootElement;
 import jakarta.xml.bind.annotation.XmlType;
-import lombok.Getter;
-import lombok.Setter;
 
 import javax.xml.datatype.XMLGregorianCalendar;
 
@@ -30,8 +28,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *
  *
  */
-@Setter
-@Getter
+
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
     "customer"
@@ -79,6 +76,7 @@ public class CustomerResponse {
     }
 
     public XMLGregorianCalendar getDob() {
+
         return this.customer.getDob();
     }
 }
