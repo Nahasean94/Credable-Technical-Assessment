@@ -2,27 +2,27 @@ package com.credable.controller;
 
 
 import com.credable.external.soap.wsdl.TransactionData;
-import com.credable.model.CustomerLoanRequest;
-import com.credable.repository.loan.LoanEntity;
-import com.credable.service.LoanService;
-import com.fasterxml.jackson.core.JsonProcessingException;
+import com.credable.model.TransactionResponse;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.springframework.beans.factory.annotation.Autowired;
+import io.swagger.v3.oas.annotations.tags.Tag;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-import static com.credable.model.LoanRequestStatus.PENDING;
-import static com.credable.model.LoanStatus.INACTIVE;
-
 
 @RestController
 @RequestMapping("/api")
+@Tag(name = "Transaction management", description = "Manages transaction records for a user")
+@Slf4j
 public class TransactionController {
 
-    @GetMapping("/v1/transaction/getTransactions/{customerNumber}")
-    public List<TransactionData> requestLoan(@PathVariable String customerNumber) {
+
+        private final TransactionResponse transactionResponse= new TransactionResponse();
+    @GetMapping("/v1/transactions/getTransactions/{customerNumber}")
+    public TransactionResponse requestLoan(@PathVariable String customerNumber) {
+        log.info("Received request to get customer transactions {}", customerNumber);
 
         try {
             String json = """
@@ -182,12 +182,20 @@ public class TransactionController {
             ObjectMapper objectMapper = new ObjectMapper();
 
 
-            List<TransactionData> transactions = objectMapper.readValue(json, new TypeReference<List<TransactionData>>() {
-            });
-            return transactions;
+            List<TransactionData> transactions = objectMapper.readValue(json, new TypeReference<>() {});
+            transactionResponse.setStatus("successful");
+            transactionResponse.setMessage("Successfully obtained transactions data");
+            transactionResponse.setData(transactions);
+            log.info("Successfully processed request to obtain customer transactions {}", transactionResponse);
+
+            return transactionResponse;
         } catch (Exception e) {
-            e.printStackTrace();
-            return null;
+            log.error("An error occurred while obtaining customer transactions: {}", e.getMessage());
+            transactionResponse.setStatus("failed");
+            transactionResponse.setMessage("An error occurred while obtaining customer transactions");
+            transactionResponse.setData(null);
+            return transactionResponse;
+
         }
     }
 }
