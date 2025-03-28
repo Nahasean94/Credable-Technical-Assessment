@@ -33,6 +33,12 @@ you can update in the application.properties file.
 Once you run the application, you can access the Swagger API documentation here:
 http://localhost:8190/swagger-ui/index.html
 
+To call the endpoints on Postman, add Basic Auth with the following credentials
+  ```bash
+      username:admin
+      password:admin
+```
+
 The project is simple and missing some key features that should be present in a production environment. Some of 
 these features include:
 1. Event management system- for queueing requests and make the requests asynchronous 

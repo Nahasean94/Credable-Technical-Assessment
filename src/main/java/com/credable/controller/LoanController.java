@@ -39,6 +39,7 @@ public class LoanController {
 
                 customerLoanResponse.setStatus("failed");
                 customerLoanResponse.setMessage("User already has a pending loan request. Please try again later");
+                customerLoanResponse.setData(null);
                 return customerLoanResponse;
             }
             custLoan = new LoanEntity();

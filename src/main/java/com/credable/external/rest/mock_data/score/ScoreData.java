@@ -9,7 +9,7 @@ public class ScoreData {
 
     public ScoreData() {
         customers.add(new ScoreObj("234774784", 750, 50000, "No Exclusion", "No Exclusion"));
-        customers.add(new ScoreObj("318411216", 50, 500, "No Exclusion", "No Exclusion"));
+        customers.add(new ScoreObj("318411216", 50, 500, "Exclusion", "No Exclusion"));
         customers.add(new ScoreObj("340397370", 150, 5000, "No Exclusion", "No Exclusion"));
         customers.add(new ScoreObj("366585630", 350, 25000, "No Exclusion", "No Exclusion"));
         customers.add(new ScoreObj("397178638", 720, 45000, "No Exclusion", "No Exclusion"));
