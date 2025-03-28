@@ -21,6 +21,12 @@ public class ScoringService {
     @Value("${scoring.api.base-url}")
     private String scoringApiBaseUrl;
 
+    @Value("${spring.security.user.name}")
+    private String scoringUsername;
+
+    @Value("${spring.security.user.password}")
+    private String scoringPassword;
+
     private final RestTemplate restTemplate;
 
     @Autowired
@@ -34,17 +40,22 @@ public class ScoringService {
     public TokenModel initiateQueryScore(String customerNumber) {
         String url = scoringApiBaseUrl + "/initiateQueryScore/" + customerNumber;
 
+
+        HttpEntity<Void> entity = getHeaders();
+
+        ResponseEntity<TokenModel> response = restTemplate.exchange(url, HttpMethod.GET, entity, TokenModel.class);
+
+
+        return response.getBody(); // Returns the token
+    }
+
+    private HttpEntity<Void> getHeaders() {
         HttpHeaders headers = new HttpHeaders();
         headers.set("client-token", UUID.randomUUID().toString());
         headers.set("Content-Type", "application/json");
         headers.set("Accept", "application/json");
-        headers.setBasicAuth("admin", "admin");
-        HttpEntity<Void> entity = new HttpEntity<>(headers);
-        System.out.println("ABout to call scoring API");
-        ResponseEntity<TokenModel> response = restTemplate.exchange(url, HttpMethod.GET, entity, TokenModel.class);
-        System.out.println("Called scoring API");
-
-        return response.getBody(); // Returns the token
+        headers.setBasicAuth(scoringUsername, scoringPassword);
+        return new HttpEntity<>(headers);
     }
 
     /**
@@ -54,25 +65,19 @@ public class ScoringService {
         try {
             String url = scoringApiBaseUrl + "/queryScore/" + token;
 
-            HttpHeaders headers = new HttpHeaders();
-            headers.set("client-token", UUID.randomUUID().toString());
-            headers.set("Content-Type", "application/json");
-            headers.set("Accept", "application/json");
-            headers.setBasicAuth("admin", "admin");
+            HttpEntity<Void> entity = getHeaders();
 
-            HttpEntity<Void> entity = new HttpEntity<>(headers);
-            log.info(url);
             ResponseEntity<ScoreObj> response = restTemplate.exchange(url, HttpMethod.GET, entity, ScoreObj.class);
-            log.info(response.getBody().getCustomerNumber()+ "is isndsjdgkgh");
 
             return response.getBody();
+
         } catch (ResourceAccessException e) {
             // This exception occurs when the request times out
-            System.err.println("Request timed out: " + e.getMessage());
+            log.error("Request timed out: {}", e.getMessage());
             return null;
         } catch (Exception e) {
             // Handle other exceptions
-            System.err.println("An error occurred: " + e.getMessage());
+            log.error("An error occurred: {}", e.getMessage());
             return null;
         }
     }

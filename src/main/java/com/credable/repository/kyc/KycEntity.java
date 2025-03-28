@@ -24,14 +24,17 @@ public class KycEntity {
     private String firstName;
     private String middleName;
     private String lastName;
+
     @Enumerated(EnumType.STRING)
     private Gender gender;
+
     @Enumerated(EnumType.STRING)
     private IdType idType;
     private String idNumber;
     private String email;
     private String mobile;
     private Double monthlyIncome;
+
     @Enumerated(EnumType.STRING)
     private Status status;
     private LocalDateTime dob;
