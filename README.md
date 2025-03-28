@@ -44,8 +44,8 @@ these features include:
 1. Event management system- for queueing requests and make the requests asynchronous 
 2. Stronger security features
 3. Caching
-4. Performance e.g use of multi threading
-5. Secure config management especially for credentials
+4. Performance - e.g use of multi threading, horizontal scalling using kubernetes
+5. Secure config management especially for credentials - e.g use of doppler, growthbook
 6. Monitoring tools
 
 
